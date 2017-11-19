@@ -25,7 +25,7 @@ urlpatterns = [
 from django.conf.urls import include
 
 urlpatterns += [
-    url(r'^catalog/', include('app.urls')),
+    url(r'^app/', include('app.urls')),
 ]
 
 #Add URL maps to redirect the base URL to our application
