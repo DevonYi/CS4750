@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+     {% load staticfiles %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'content/bootstrap.min.css' %}"/>
 </head>
 <body>
-HELLO
+<button type="button" class="btn btn-primary">Primary</button>
+
+<script src="{% static 'app/scripts/jquery-1.10.2.js' %}"></script>
+<script src="{% static 'app/scripts/bootstrap.js' %}"></script>
 </body>
 </html>
