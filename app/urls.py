@@ -6,4 +6,5 @@ from app.views import *
 
 urlpatterns = [
     url(r'^$', home, name='home'),
+    url(r'^$', home, name='doctor')
 ]

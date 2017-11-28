@@ -5,6 +5,7 @@ from datetime import datetime
 
 def home(request):
     """Renders the home page."""
+    print("home")
     assert isinstance(request, HttpRequest)
     return render(
         request,
@@ -13,3 +14,4 @@ def home(request):
             'title': 'Home Page',
         }
     )
+
