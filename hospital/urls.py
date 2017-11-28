@@ -26,12 +26,16 @@ from django.conf.urls import include
 
 urlpatterns += [
     url(r'^home/', include('app.urls')),
+    url(r'^doctor/', include('doctors.urls')),
 ]
+
+
 
 #Add URL maps to redirect the base URL to our application
 from django.views.generic import RedirectView
 urlpatterns += [
     url(r'^$', RedirectView.as_view(url='/app/', permanent=True)),
+    url(r'^$', RedirectView.as_view(url='/doctor/', permanent=True)),
 ]
 
 # Use static() to add url mapping to serve static files during development (only)
