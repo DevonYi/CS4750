@@ -27,6 +27,7 @@ from django.conf.urls import include
 urlpatterns += [
     url(r'^home/', include('app.urls')),
     url(r'^doctor/', include('doctors.urls')),
+    url(r'^appointment/', include('appointments.urls')),
 ]
 
 

@@ -7,7 +7,7 @@ from patients.views import *
 
 
 urlpatterns = [
-    url(r'^$', home, name='home'),
-    url(r'^$', doctor, name='doctor'),
+    url(r'^home$', home, name='home'),
+    url(r'^doctor$', doctor, name='doctor'),
     url(r'^patients$', patients, name='patients')
 ]

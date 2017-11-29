@@ -1,20 +1,10 @@
+
 from django.shortcuts import render
 import pymysql
-# Create your views here.
 
 
-
-
-
-
-# Connect to the database.
-
-
-
-def patients(request):
-    # p = Patient.objects.all()
-    # patients = len(p)
-    patients = []
+def appointments(request):
+    appointments = []
     connection = pymysql.connect(host='127.0.0.1',
                                  user='root',
                                  password='root',
@@ -26,22 +16,30 @@ def patients(request):
     try:
         with connection.cursor() as cursor:
             # SQL
-            sql = "SELECT * FROM Patient"
-            # Execute query.
+            sql = "select aUid, aptDate, reason, pName, pSSN, pAllergies, nName, dName, hName, rNumber " \
+                  "from appointment inner join nurse on (appointment.nUid = nurse.nUid) " \
+                  "inner join patient on (appointment.pUid = patient.pUid) " \
+                  "inner join doctor on (appointment.dUid = doctor.dUid)" \
+                  "inner join hospital on (appointment.hUid = hospital.hUid)"
             cursor.execute(sql)
             print("cursor.description: ", cursor.description)
             print()
             for row in cursor:
-                patients.append(row)
+                appointments.append(row)
+                print("record: " + str(row))
     finally:
         # Close connection.
         connection.close()
+    num_doctors = len(appointments)
 
+    practiceSet = set()
+
+
+    print(practiceSet)
 
     return render(
         request,
-        'patients.html', {
-            'patients': patients,
+        'appointment.html', {
+            'appointments': appointments
         }
     )
-

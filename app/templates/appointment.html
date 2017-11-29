@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% load i18n %}
+
+{% block content %}
+<br/>
+<br/>
+<h1>{% trans "Appointments" %}</h1>
+
+<text> filter by </text>
+
+<form action="doctor-query" method="POST">
+    <select class="btn btn-danger" name="query" value="{{ p.name }}" style="background-color:#E6E6FA; border-color:#E6E6FA; color: black;">
+        {% for p in practices %}
+            <option value= {{p}} > {{p}} </option>
+        {% endfor %}
+    </select>
+</form>
+
+{% if appointments %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>{% trans "patient name" %}</th>
+            <th>{% trans "allergies" %}</th>
+            <th>{% trans "date" %}</th>
+            <th>{% trans "reason" %}</th>
+            <th>{% trans "doctor" %}</th>
+            <th>{% trans "nurse" %}</th>
+            <th>{% trans "hospital" %}</th>
+            <th>{% trans "room" %}</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for a in appointments %}
+    <tr>
+        <td>{{ a.pName }}</td>
+        <td>{{ a.pAllergies }}</td>
+        <td>{{ a.aptDate }}</td>
+        <td>{{ a.reason }}</td>
+        <td>{{ a.dName }}</td>
+        <td>{{ a.nName }}</td>
+        <td>{{ a.hName }}</td>
+        <td>{{ a.rNumber }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>{% trans "No appointments." %}</p>
+{% endif %}
+{% endblock %}
