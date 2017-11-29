@@ -6,7 +6,6 @@ from app.models import Doctor
 
 
 def doctor(request):
-    print("doctor")
 
     # num_doctors = Doctor.objects.all.count()
 

@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+<br>
+<br>
+<h3>Patients</h3>
+<table class="table table-striped">
+        <tr>
+            <th>Name</th>
+            <th>Health Care</th>
+            <th>SSN</th>
+            <th>Allergies</th>
+        </tr>
+        {% for p in patients %}
+                <tr>
+                    <td>{{ p.pName }}</td>
+                    <td>{{ p.pHealthCare }}</td>
+                    <td>{{ p.pSSN }}</td>
+                    <td>{{ p.pAllergies}}</td>
+                </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
