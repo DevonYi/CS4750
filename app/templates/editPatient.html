@@ -14,10 +14,18 @@
 
         {% csrf_token %}
 
-        Name: <input type="text" name="editName" value="{{patient.pName}}"><br>
-        Health Care: <input type="text" name="editHC" value="{{patient.pHealthCare}}" ><br>
-        Allergies: <input type="text" name="editAllergies" value="{{patient.pAllergies}}" ><br>
-        SSN: <input type="text" name="editSSN" value="{{patient.pSSN}}" ><br>
+        Name: <input type="text" name="editName" value="{{patient.pName}}">
+        <br>
+        <br>
+        Health Care: <input type="text" name="editHC" value="{{patient.pHealthCare}}" >
+        <br>
+        <br>
+        Allergies: <input type="text" name="editAllergies" value="{{patient.pAllergies}}" >
+        <br>
+        <br>
+        SSN: <input type="text" name="editSSN" value="{{patient.pSSN}}" >
+        <br>
+        <br>
         <input type="hidden" name="editUid" value="{{patient.pUid}}">
         <br/>
 
