@@ -10,7 +10,6 @@ import pymysql
 # Connect to the database.
 
 
-
 def patients(request):
     # p = Patient.objects.all()
     # patients = len(p)

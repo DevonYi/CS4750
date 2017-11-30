@@ -28,11 +28,14 @@ from doctors.views import *
 from patients.views import *
 from nurses.views import *
 
+
+
 urlpatterns += [
     url(r'^home/', include('app.urls')),
     url(r'^doctor/', doctor, name='doctor'),
     url(r'^appointment/', appointments, name='appointments'),
     url(r'^patients/', patients, name='patients'),
+    url(r'^create_apt/', create_apt, name='create_apt'),
     url(r'^nurses/', nurses, name='nurses'),
 ]
 
