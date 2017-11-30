@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<br/>
+<br/>
+<br/>
+
+<head>
+    <meta charset="UTF-8">
+    <title> Edit Patient </title>
+
+    {% csrf_token %}
+    <form action="" method="POST">
+
+        {% csrf_token %}
+
+        Name: <input type="text" name="editName" value="{{patient.pName}}"><br>
+        Health Care: <input type="text" name="editHC" value="{{patient.pHealthCare}}" ><br>
+        Allergies: <input type="text" name="editAllergies" value="{{patient.pAllergies}}" ><br>
+        SSN: <input type="text" name="editSSN" value="{{patient.pSSN}}" ><br>
+        <input type="hidden" name="editUid" value="{{patient.pUid}}">
+        <br/>
+
+        <button class="btn btn-info btn-block btn-password" type="query" name="submit_Edits" value="submit" >
+             Submit
+        </button>
+
+    </form>
+
+</head>
+<body>
+
+</body>
+{% endblock %}

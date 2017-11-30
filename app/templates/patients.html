@@ -2,6 +2,9 @@
 
 
 {% block content %}
+
+
+
 <br>
 <br>
 <h3>Patients</h3>
@@ -11,14 +14,30 @@
             <th>Health Care</th>
             <th>SSN</th>
             <th>Allergies</th>
+            <th>Edit</th>
         </tr>
         {% for p in patients %}
                 <tr>
-                    <td>{{ p.pName }}</td>
-                    <td>{{ p.pHealthCare }}</td>
-                    <td>{{ p.pSSN }}</td>
-                    <td>{{ p.pAllergies}}</td>
+                    {% csrf_token %}
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <td>{{ p.pName }}</td>
+                        <td>{{ p.pHealthCare }}</td>
+                        <td>{{ p.pSSN }}</td>
+                        <td>{{ p.pAllergies}}</td>
+                        <input type="hidden" name='hiddenUid' value="{{p.pUid}}">
+                        <td>
+                        <button class="btn btn-info btn-block btn-password" type="query" name="edit_Patient" value= {{p.pUid}} >
+                            Edit
+                        </button>
+                    </form>
+
+                </td>
                 </tr>
         {% endfor %}
     </table>
+
+
+
+
 {% endblock %}
