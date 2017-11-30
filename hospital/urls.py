@@ -23,12 +23,15 @@ urlpatterns = [
 
 # Use include() to add URLS from the catalog application 
 from django.conf.urls import include
+from appointments.views import *
+from doctors.views import *
+from patients.views import *
 
 urlpatterns += [
     url(r'^home/', include('app.urls')),
-    url(r'^doctor/', include('doctors.urls')),
-    url(r'^appointment/', include('appointments.urls')),
-    url(r'^patients/', include('patients.urls')),
+    url(r'^doctor/', doctor, name='doctor'),
+    url(r'^appointment/', appointments, name='appointments'),
+    url(r'^patients/', patients, name='patients'),
 ]
 
 
