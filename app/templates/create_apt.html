@@ -1,10 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "layout.html" %}
+
+{% block content %}
+    <br>
+    <br>
+<h1>Create an Appointment</h1>
+
+{% csrf_token %}
+<form action="" method="POST">
+    Select a Doctor
+    {% csrf_token %}
+    <select type="query" class="queryValue" name="doctor" style="background-color:#E6E6FA; border-color:#E6E6FA; color: black;">
+        {% for d in doctors %}
+            <option value="{{ d.dUid }}" > {{d.dName}} </option>
+        {% endfor %}
+    </select>
+
+    <br>
+    <br>
+    Select a Nurse
+     {% csrf_token %}
+    <select type="query" class="queryValue" name="nurse" style="background-color:#E6E6FA; border-color:#E6E6FA; color: black;">
+        {% for n in nurses %}
+            <option value="{{ n.nUid }}"> {{n.nName}}</option>
+        {% endfor %}
+    </select>
+
+    <br>
+    <br>
+    Select a Patient
+     {% csrf_token %}
+    <select type="query" class="queryValue" name="patient" style="background-color:#E6E6FA; border-color:#E6E6FA; color: black;">
+        {% for p in patients %}
+            <option value="{{ p.pUid }}" > {{p.pName}}</option>
+        {% endfor %}
+    </select>
+
+    <br>
+    <br>
+    Select a Hospital Room
+     {% csrf_token %}
+    <select type="query" class="queryValue" name="hospitalroom" style="background-color:#E6E6FA; border-color:#E6E6FA; color: black;">
+        {% for h in hospitalrooms %}
+            <option value="{{ h.hUid }}+{{h.rNumber}}" > {{h.hName}} Room {{h.rNumber}}</option>
+        {% endfor %}
+    </select>
+
+    <br>
+    <br>
+    Select an Appointment Type
+    <select type="query" class="queryValue" name="aptType" style="background-color:#E6E6FA; border-color:#E6E6FA; color: black;">
+        <option value="surgery" >Surgery</option>
+        <option value="general medicine" >General Medicine</option>
+        <option value="pediatrics" >Pediatrics</option>
+        <option value="video meeting" >Video Meeting</option>
+        <option value="urgent care" >Urgent Care</option>
+        <option value="ICU" >ICU</option>
+        <option value="phone consultation" >Phone Consultation</option>
+    </select>
+
+    <br>
+    <br>
+    Enter Date of Visit
+    <input id="datetime" name="aptDate" type="datetime-local">
+
+    <br>
+    <br>
+    Enter Reason for Visit
+    <textarea name="reason" cols="50" rows="10"></textarea>
+
+
+    <br>
+    <br>
+    <input type='submit' class="btn btn-primary" name="submit_btn"/>
+</form>
+
+
+
+{% endblock %}
