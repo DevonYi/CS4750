@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% load i18n %}
+
+{% block content %}
+<br/>
+<br/>
+<h1>{% trans "nurses" %}</h1>
+
+<text> filter by practice</text>
+
+<form action="doctor-query" method="POST">
+    <select class="btn btn-danger" name="query" value="{{ p.name }}" style="background-color:#E6E6FA; border-color:#E6E6FA; color: black;">
+        {% for p in practices %}
+            <option value= {{p}} > {{p}} </option>
+        {% endfor %}
+    </select>
+</form>
+
+{% if doctors %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>{% trans "Name" %}</th>
+            <th>{% trans "dUid" %}</th>
+            <th>{% trans "practice" %}</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for d in doctors %}
+    <tr>
+        <td>{{ d.dName }}</td>
+        <td>{{ d.dUid }}</td>
+        <td>{{ d.practiceName }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>{% trans "No doctors." %}</p>
+{% endif %}
+{% endblock %}
