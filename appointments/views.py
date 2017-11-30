@@ -34,7 +34,7 @@ def appointments(request):
         with connection.cursor() as cursor:
             # SQL
             sql = "select aUid, aptDate, reason, pName, pSSN, pAllergies, nName, dName, hName, rNumber " \
-                  "from appointment inner join nurse on (appointment.nUid = nurse.nUid) " \
+                  "from appointment left outer join nurse on (appointment.nUid = nurse.nUid) " \
                   "inner join patient on (appointment.pUid = patient.pUid) " \
                   "inner join doctor on (appointment.dUid = doctor.dUid)" \
                   "inner join hospital on (appointment.hUid = hospital.hUid)"
