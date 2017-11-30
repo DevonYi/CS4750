@@ -8,12 +8,18 @@
 
 <text> filter by practice</text>
 
-<form action="doctor-query" method="POST">
-    <select class="btn btn-danger" name="query" value="{{ p.name }}" style="background-color:#E6E6FA; border-color:#E6E6FA; color: black;">
+{% csrf_token %}
+<form action="" method="POST">
+    {% csrf_token %}
+    <select type="query" class="queryValue" name="queryValue" style="background-color:#E6E6FA; border-color:#E6E6FA; color: black;">
         {% for p in practices %}
-            <option value= {{p}} > {{p}} </option>
+            <option value="{{ p }}" > {{p}} </option>
         {% endfor %}
     </select>
+
+    <input type='submit' class="'btn" name="submit_btn" size="40"/>
+
+
 </form>
 
 {% if doctors %}
