@@ -5,10 +5,14 @@ from app.views import *
 from doctors.views import *
 from patients.views import *
 from appointments import *
-from nurses import *
-
 
 urlpatterns = [
+<<<<<<< HEAD
+    url(r'^home$', home, name='home'),
+    url(r'^doctor$', doctor, name='doctor'),
+    url(r'^patients$', patients, name='patients'),
+=======
     url(r'^$', home, name='home'),
     #url(r'^$', appointments, name='create_apt'),
+>>>>>>> b6401179088a053eda6e9f311ac0d812bc4b16f4
 ]

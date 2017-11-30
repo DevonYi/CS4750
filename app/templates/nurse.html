@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% load i18n %}
+
+{% block content %}
+<br/>
+<br/>
+<h1>{% trans "Nurses" %}</h1>
+{% if nurses %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>{% trans "Nurse" %}</th>
+            <th>{% trans "ID" %}</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for a in nurses %}
+    <tr>
+        <td>{{ a.nName }}</td>
+        <td>{{ a.nUid }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>{% trans "No nurses." %}</p>
+{% endif %}
+{% endblock %}
