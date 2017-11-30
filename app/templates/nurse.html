@@ -4,38 +4,25 @@
 {% block content %}
 <br/>
 <br/>
-<h1>{% trans "nurses" %}</h1>
-
-<text> filter by practice</text>
-
-<form action="doctor-query" method="POST">
-    <select class="btn btn-danger" name="query" value="{{ p.name }}" style="background-color:#E6E6FA; border-color:#E6E6FA; color: black;">
-        {% for p in practices %}
-            <option value= {{p}} > {{p}} </option>
-        {% endfor %}
-    </select>
-</form>
-
-{% if doctors %}
+<h1>{% trans "Nurses" %}</h1>
+{% if nurses %}
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>{% trans "Name" %}</th>
-            <th>{% trans "dUid" %}</th>
-            <th>{% trans "practice" %}</th>
+            <th>{% trans "Nurse" %}</th>
+            <th>{% trans "ID" %}</th>
         </tr>
     </thead>
     <tbody>
-    {% for d in doctors %}
+    {% for a in nurses %}
     <tr>
-        <td>{{ d.dName }}</td>
-        <td>{{ d.dUid }}</td>
-        <td>{{ d.practiceName }}</td>
+        <td>{{ a.nName }}</td>
+        <td>{{ a.nUid }}</td>
     </tr>
     {% endfor %}
     </tbody>
 </table>
 {% else %}
-<p>{% trans "No doctors." %}</p>
+<p>{% trans "No nurses." %}</p>
 {% endif %}
 {% endblock %}

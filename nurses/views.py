@@ -4,7 +4,7 @@ import pymysql
 
 
 def nurses(request):
-    appointments = []
+    nurses = []
     connection = pymysql.connect(host='127.0.0.1',
                                  user='root',
                                  password='root',
@@ -16,21 +16,17 @@ def nurses(request):
     try:
         with connection.cursor() as cursor:
             # SQL
-            sql = "select aUid, aptDate, reason, pName, pSSN, pAllergies, nName, dName, hName, rNumber " \
-                  "from appointment inner join nurse on (appointment.nUid = nurse.nUid) " \
-                  "inner join patient on (appointment.pUid = patient.pUid) " \
-                  "inner join doctor on (appointment.dUid = doctor.dUid)" \
-                  "inner join hospital on (appointment.hUid = hospital.hUid)"
+            sql = "SELECT * FROM nurse "
             cursor.execute(sql)
             print("cursor.description: ", cursor.description)
             print()
             for row in cursor:
-                appointments.append(row)
+                nurses.append(row)
                 print("record: " + str(row))
     finally:
         # Close connection.
         connection.close()
-    num_doctors = len(appointments)
+    num_doctors = len(nurses)
 
     practiceSet = set()
 
@@ -39,7 +35,7 @@ def nurses(request):
 
     return render(
         request,
-        'appointment.html', {
-            'appointments': appointments
+        'nurse.html', {
+            'nurses': nurses
         }
     )

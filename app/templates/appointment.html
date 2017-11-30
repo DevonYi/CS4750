@@ -6,14 +6,10 @@
 <br/>
 <h1>{% trans "Appointments" %}</h1>
 
-<text> filter by </text>
-
-<form action="doctor-query" method="POST">
-    <select class="btn btn-danger" name="query" value="{{ p.name }}" style="background-color:#E6E6FA; border-color:#E6E6FA; color: black;">
-        {% for p in practices %}
-            <option value= {{p}} > {{p}} </option>
-        {% endfor %}
-    </select>
+<form action="" method="POST">
+    <button class="btn btn-primary" name="create_apt" value="create_apt" style="float:right;">
+        Create an Appointment
+    </button>
 </form>
 
 {% if appointments %}

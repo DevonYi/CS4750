@@ -1,18 +1,32 @@
 
 from django.shortcuts import render
 import pymysql
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpRequest
 
 
+@csrf_exempt
 def appointments(request):
     appointments = []
+    assert isinstance(request, HttpRequest)
+
+    if (request.POST.get('create_apt')):
+        return render(
+            request,
+            'appointment.html', {
+                # 'appointments': appointments
+            }
+        )
+
+
+
+
     connection = pymysql.connect(host='127.0.0.1',
                                  user='root',
                                  password='root',
                                  db='cs4750',
                                  charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
-
-    print("connect successful!!")
     try:
         with connection.cursor() as cursor:
             # SQL
